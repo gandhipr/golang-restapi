@@ -1,0 +1,12 @@
+title: App2 with space and /.
+version: v3.9
+maintainers:
+  - name: Firstname Lastname
+    email: apptwo@hotmail.com
+company: Upbound Inc.
+website: https://upbound.io
+source: https://github.com/upbound/repo
+license: Apache-2.0
+description: |
+  ### blob of markdown
+  More markdown
