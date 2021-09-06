@@ -18,6 +18,7 @@ type outputYaml1 struct {
 	Data    []utils.Metadata `yaml:"data,omitempty"`
 }
 
+// Test_POST_CreateMetadataFromFileUrl tests POST api handler.
 func Test_POST_CreateMetadataFromFileUrl(t *testing.T) {
 	t.Run("test POST restApi with CreateMetadataFromFileUrl as the handler function should succeed", func(t *testing.T) {
 		gin.SetMode(gin.TestMode)
@@ -38,6 +39,7 @@ func Test_POST_CreateMetadataFromFileUrl(t *testing.T) {
 	})
 }
 
+// Test_GET_GetAllMetadata tests GET api handler.
 func Test_GET_GetAllMetadata(t *testing.T) {
 	t.Run("test GET restApi with GetAllMetadata as the handler function should succeed", func(t *testing.T) {
 		gin.SetMode(gin.TestMode)
@@ -61,6 +63,7 @@ func Test_GET_GetAllMetadata(t *testing.T) {
 	})
 }
 
+// Test_UPDATE_UpdateMetadataFromFileUrl tests PUT api handler.
 func Test_UPDATE_UpdateMetadataFromFileUrl(t *testing.T) {
 	t.Run("test PUT restApi with UpdateMetadataFromFileUrl as the handler function should succeed", func(t *testing.T) {
 		gin.SetMode(gin.TestMode)
@@ -81,6 +84,7 @@ func Test_UPDATE_UpdateMetadataFromFileUrl(t *testing.T) {
 	})
 }
 
+// Test_DELETE_DeleteMetadataWithVersion tests DELETE api handler.
 func Test_DELETE_DeleteMetadataWithVersion(t *testing.T) {
 	t.Run("test DELETE restapi wuth DeleteMetadata as the handler function should succeed", func(t *testing.T) {
 		gin.SetMode(gin.TestMode)

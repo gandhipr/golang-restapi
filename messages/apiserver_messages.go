@@ -9,6 +9,6 @@ var (
 	UpdateAppMetadataErr     = "error updating metadata in the store"
 	MetadataFound            = "successfully retrieved metadata from teh store"
 	MetadataNotFound         = "didn't find relevant metadata in the store"
-	DeleteAppMetadataSuccess = "error deleting metadata from the store"
-	DeleteAppMetadataErr     = "successfully deleted metadata from the store"
+	DeleteAppMetadataErr     = "error deleting metadata from the store"
+	DeleteAppMetadataSuccess = "successfully deleted metadata from the store"
 )

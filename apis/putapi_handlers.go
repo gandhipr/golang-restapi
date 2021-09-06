@@ -9,9 +9,9 @@ import (
 	"net/http"
 )
 
+// UpdateMetadata updates metadata in the datastore for a given title and version specified using --data-binary.
 func UpdateMetadata(c *gin.Context) {
-	ctx := utils.GinContext{C: c}
-	metadataConfig, err := ctx.GetMetadataConfigFromFileBinary()
+	metadataConfig, err := utils.GetMetadataConfigFromFileBinary(c)
 	if err != nil {
 		c.YAML(http.StatusBadRequest, gin.H{"status ": http.StatusBadRequest, "errorMessage": messages.ErrGeneratingMetadata, "error": err})
 		c.Abort()
@@ -33,9 +33,9 @@ func UpdateMetadata(c *gin.Context) {
 	}
 }
 
+// UpdateMetadataFromFileUrl updates metadata in the datastore for a given title and version specified using filepath.
 func UpdateMetadataFromFileUrl(c *gin.Context) {
-	ctx := utils.GinContext{C: c}
-	metadataConfig, err := ctx.GetMetadataConfigFromFileURL()
+	metadataConfig, err := utils.GetMetadataConfigFromFileURL(c)
 	if err != nil {
 		c.YAML(http.StatusBadRequest, gin.H{"status ": http.StatusBadRequest, "errorMessage": messages.ErrGeneratingMetadata, "error": err})
 		c.Abort()

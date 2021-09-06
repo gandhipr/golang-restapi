@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-// declared global for caching.
+// validate declared global for caching.
 var validate *validator.Validate
 
 func init() {
@@ -24,29 +24,27 @@ func init() {
 
 }
 
-// 6+2 (comma and space extra)
+// customized validator for "title" field.
 func title(fl validator.FieldLevel) bool {
 	return regexp.MustCompile(`^[ ,_/.a-zA-Z0-9-]*$`).MatchString(fl.Field().String())
 }
 
-// 4+2
+// customized validator for "version" field.
 func version(fl validator.FieldLevel) bool {
 	return regexp.MustCompile(`^[_/.a-zA-Z0-9-]*$`).MatchString(fl.Field().String())
 }
 
 func ValidateInput(metadata utils.Metadata) (bool, map[string][]string) {
 	if err := validate.Struct(metadata); err != nil {
-		//Validation messages occurred
 		errors := make(map[string][]string)
 
-		//Use reflector to reverse engineer struct
 		reflected := reflect.ValueOf(metadata)
 
 		for _, err := range err.(validator.ValidationErrors) {
 
 			field, _ := reflected.Type().FieldByName(err.StructField())
 			var name string
-			//If yaml tag doesn't exist, use lower case of name
+			//If yaml tag doesn't exist, use lower case of name.
 			if name = strings.Split(field.Tag.Get("yaml"), ",")[0]; name == "" {
 				name = strings.ToLower(err.StructField())
 			}

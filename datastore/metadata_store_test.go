@@ -28,6 +28,7 @@ var sampleValidStruct = utils.Metadata{
 	Description: "dummyDescription",
 }
 
+// TestStore_AddMetadataStore tests POST related methods of the datastore.
 func TestStore_AddMetadataStore(t *testing.T) {
 	mockCtrl := gomock.NewController(t)
 	defer mockCtrl.Finish()
@@ -55,6 +56,7 @@ func TestStore_AddMetadataStore(t *testing.T) {
 	})
 }
 
+// TestStore_UpdateMetadataStore tests PUT related methods of the datastore.
 func TestStore_UpdateMetadataStore(t *testing.T) {
 	mockCtrl := gomock.NewController(t)
 	defer mockCtrl.Finish()
@@ -82,6 +84,7 @@ func TestStore_UpdateMetadataStore(t *testing.T) {
 	})
 }
 
+// TestStore_GetMetadataStore tests GET related methods of the datastore.
 func TestStore_GetMetadataStore(t *testing.T) {
 	mockCtrl := gomock.NewController(t)
 	defer mockCtrl.Finish()
@@ -165,6 +168,7 @@ func TestStore_GetMetadataStore(t *testing.T) {
 	})
 }
 
+// TestStore_DeleteMetadataStore tests DELETE related methods of the datastore.
 func TestStore_DeleteMetadataStore(t *testing.T) {
 	mockCtrl := gomock.NewController(t)
 	defer mockCtrl.Finish()

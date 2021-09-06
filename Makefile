@@ -22,8 +22,8 @@ run:  ## run the API server binary
 fmt: ## run "go fmt" on all Go packages
 	@go fmt $(PACKAGES)
 
-.PHONY: unit-test
-unit-test:  ## run unit-tests
+.PHONY: test
+test:  ## run tests
 	go test $(MODULE)/./...
 
 .PHONY: generate-mock

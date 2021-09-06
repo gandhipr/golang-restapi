@@ -9,15 +9,15 @@ import (
 	"net/http"
 )
 
+// CreateMetadata stores metadata specified in --data-binary in the datastore if not present.
 func CreateMetadata(c *gin.Context) {
-	ctx := utils.GinContext{C: c}
-	metadataConfig, err := ctx.GetMetadataConfigFromFileBinary()
+	metadataConfig, err := utils.GetMetadataConfigFromFileBinary(c)
 	if err != nil {
 		c.YAML(http.StatusBadRequest, gin.H{"status ": http.StatusBadRequest, "errorMessage": messages.ErrGeneratingMetadata, "error": err})
 		c.Abort()
 		return
 	}
-	// Validate metadataConfig
+	// Validate metadataConfig.
 	if valid, err := validators.ValidateInput(metadataConfig); !valid {
 		c.YAML(http.StatusUnprocessableEntity, gin.H{"status": http.StatusUnprocessableEntity, "message": messages.InvalidInput, "error": err})
 		c.Abort()
@@ -33,16 +33,15 @@ func CreateMetadata(c *gin.Context) {
 	}
 }
 
+// CreateMetadataFromFileUrl stores metadata specified in the filepath in the datastore if not present.
 func CreateMetadataFromFileUrl(c *gin.Context) {
-	ctx := utils.GinContext{C: c}
-
-	metadataConfig, err := ctx.GetMetadataConfigFromFileURL()
+	metadataConfig, err := utils.GetMetadataConfigFromFileURL(c)
 	if err != nil {
 		c.YAML(http.StatusBadRequest, gin.H{"status ": http.StatusBadRequest, "errorMessage": messages.ErrGeneratingMetadata, "error": err})
 		c.Abort()
 		return
 	}
-	// Validate metadataConfig
+	// Validate metadataConfig.
 	if valid, err := validators.ValidateInput(metadataConfig); !valid {
 		c.YAML(http.StatusUnprocessableEntity, gin.H{"status": http.StatusUnprocessableEntity, "message": messages.InvalidInput, "error": err})
 		c.Abort()

@@ -1,7 +1,5 @@
 package utils
 
-import "github.com/gin-gonic/gin"
-
 type Metadata struct {
 	Title       string       `yaml:"title,omitempty" validate:"required,title"`
 	Version     string       `yaml:"version,omitempty" validate:"required,version"`
@@ -16,8 +14,4 @@ type Metadata struct {
 type Maintainer struct {
 	Name  string `yaml:"name,omitempty" validate:"required"`
 	Email string `yaml:"email,omitempty" validate:"required,email"`
-}
-
-type GinContext struct {
-	C *gin.Context
 }

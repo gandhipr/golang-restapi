@@ -1,13 +1,13 @@
 package utils
 
 import (
+	"github.com/gin-gonic/gin"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"strings"
 )
 
-func (ctx GinContext) GetMetadataConfigFromFileURL() (Metadata, error) {
-	c := ctx.C
+func GetMetadataConfigFromFileURL(c *gin.Context) (Metadata, error) {
 	var metadataConfig Metadata
 
 	filePath := c.Param("filepath")
@@ -25,8 +25,7 @@ func (ctx GinContext) GetMetadataConfigFromFileURL() (Metadata, error) {
 	return metadataConfig, nil
 }
 
-func (ctx GinContext) GetMetadataConfigFromFileBinary() (Metadata, error) {
-	c := ctx.C
+func GetMetadataConfigFromFileBinary(c *gin.Context) (Metadata, error) {
 	var metadataConfig Metadata
 
 	f := c.Request.Body
@@ -42,7 +41,7 @@ func (ctx GinContext) GetMetadataConfigFromFileBinary() (Metadata, error) {
 }
 
 // Replaces "%20" with " " and "+" with "/".
-// Currently used by get and delete rest apis - title and version, filePath - above.
+// Currently used to format following fields - title, version, filePath.
 func FormatString(strData string) string {
 	res := strings.ReplaceAll(strData, "%20", " ")
 	res = strings.ReplaceAll(res, "+", "/")

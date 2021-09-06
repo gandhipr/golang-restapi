@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+// GetAllMetadata lists on the metadata from the datastore.
 func GetAllMetadata(c *gin.Context) {
 	metadataStore := datastore.GetStore()
 
@@ -19,6 +20,7 @@ func GetAllMetadata(c *gin.Context) {
 	}
 }
 
+// GetMetadata lists all the versions of the metadata for a given title.
 func GetMetadata(c *gin.Context) {
 	title := utils.FormatString(c.Param("title"))
 	metadataStore := datastore.GetStore()
@@ -31,6 +33,7 @@ func GetMetadata(c *gin.Context) {
 	}
 }
 
+// GetMetadataForVersion returns a specific metadata for a given title and version.
 func GetMetadataForVersion(c *gin.Context) {
 	title := utils.FormatString(c.Param("title"))
 	version := utils.FormatString(c.Param("version"))

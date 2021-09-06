@@ -33,6 +33,7 @@ var (
 	}
 )
 
+// TestValidInputs tests valid input.
 func TestValidInputs(t *testing.T) {
 	t.Run("input validation should succeed", func(t *testing.T) {
 		valid, expectedErrorMap := ValidateInput(sampleValidStruct)
@@ -41,6 +42,7 @@ func TestValidInputs(t *testing.T) {
 	})
 }
 
+// TestInvalidInputs tests multiple invalid inputs.
 func TestInvalidInputs(t *testing.T) {
 
 	emptyCompany := deepcopy.Copy(sampleValidStruct).(utils.Metadata)

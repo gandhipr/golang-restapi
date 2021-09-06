@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+// DeleteMetadata deletes all the metadata for a given title from the datastore.
 func DeleteMetadata(c *gin.Context) {
 	title := utils.FormatString(c.Param("title"))
 
@@ -19,6 +20,7 @@ func DeleteMetadata(c *gin.Context) {
 	}
 }
 
+// DeleteMetadataWithVersion deletes a particular metadata for a given title and version from the datastore.
 func DeleteMetadataWithVersion(c *gin.Context) {
 	title := utils.FormatString(c.Param("title"))
 	version := utils.FormatString(c.Param("version"))
